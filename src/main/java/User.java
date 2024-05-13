@@ -1,7 +1,13 @@
-public class HumanDriver {
+public class User {
     private String name;
     private String address;
     private String county;
+
+    public User(String name, String address, String county) {
+        this.name = name;
+        this.address = address;
+        this.county = county;
+    }
 
     public String getName() {
         return name;
