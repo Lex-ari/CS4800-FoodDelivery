@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+
+import Cuisine.CuisineType;
 import Food.*;
 import java.time.LocalTime;
 
@@ -7,12 +9,12 @@ public class Restaurant {
     private String address;
     private String county;
     private TimeRange operatingHours;
-    private String cuisineStyle; // This might be an enum
+    private CuisineType cuisineStyle;
     private ArrayList<Food> menu = new ArrayList<>();
     private CPPFoodDelivery cppFoodDelivery;
 
 
-    public Restaurant(String name, String address, String county, TimeRange operatingHours, String cuisineStyle, CPPFoodDelivery cppFoodDelivery) {
+    public Restaurant(String name, String address, String county, TimeRange operatingHours, CuisineType cuisineStyle, CPPFoodDelivery cppFoodDelivery) {
         this.name = name;
         this.address = address;
         this.county = county;

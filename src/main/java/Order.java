@@ -1,3 +1,4 @@
+import Diet.DietaryRestriction;
 import Food.*;
 
 import java.time.LocalTime;
@@ -8,7 +9,7 @@ public class Order {
     private Restaurant restaurant;
     private Customer customer;
     private DeliveryDriver deliveryDriver;
-    // Dietary Restrictions
+    private DietaryRestriction dietaryRestriction;
     private List<Food> foodItems = new ArrayList<>();
     private LocalTime orderPickUpTime;
     private LocalTime orderDeliveredTime;
