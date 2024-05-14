@@ -1,4 +1,6 @@
 package Food;
 
-public abstract class Food {
+public interface Food {
+    @Override
+    String toString();
 }
