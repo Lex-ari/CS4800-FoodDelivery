@@ -14,14 +14,13 @@ public class Driver {
         deliveryDriver.addShift(TimeShift.FirstShift);
 
         ArrayList<Food> foodItems = new ArrayList<>();
-        Food food = new MenuItem();
-        FoodOption ingredient1 = FoodOption.Beef;
-        FoodOption ingredient2 = FoodOption.Bun;
-        food.addIngredient(ingredient1);
-        food.addIngredient(ingredient2);
-        food = ToppingManager.addAdditionalCostToItem("Cheese", food);
-        foodItems.add(food);
-        System.out.println(food.toString());
+        Food baseBigMac = new MenuItem();
+        baseBigMac.addIngredient(FoodOption.Beef);
+        baseBigMac.addIngredient(FoodOption.Bun);
+        baseBigMac = ToppingManager.addAdditionalCostToItem("Cheese", baseBigMac);
+        baseBigMac = ToppingManager.addAdditionalCostToItem("Ketchup", baseBigMac);
+        foodItems.add(baseBigMac);
+        System.out.println(baseBigMac.toString());
         customer.placeOrder(restaurant, foodItems, LocalTime.of(12, 0));
 
         deliveryDriver.finishDelivery();
