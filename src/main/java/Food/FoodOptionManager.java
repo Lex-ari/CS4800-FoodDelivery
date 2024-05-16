@@ -10,6 +10,7 @@ public class FoodOptionManager {
         carbs = new ArrayList<>();
         proteins = new ArrayList<>();
         fats = new ArrayList<>();
+        allFoodOptions = new ArrayList<>();
     }
 
     public static FoodOptionManager getInstance() {
@@ -35,6 +36,7 @@ public class FoodOptionManager {
             default:
                 throw new IllegalArgumentException("Unknown macronutrient type: " + macronutrientType);
         }
+        allFoodOptions.add(foodOption);
     }
 
     public ArrayList<FoodOption> getFoodOptions(MacronutrientType macronutrientType) {
@@ -53,6 +55,7 @@ public class FoodOptionManager {
     ArrayList<FoodOption> carbs;
     ArrayList<FoodOption> proteins;
     ArrayList<FoodOption> fats;
+    ArrayList<FoodOption> allFoodOptions;
 
 
 }

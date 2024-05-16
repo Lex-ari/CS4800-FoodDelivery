@@ -11,14 +11,12 @@ public class DeliveryDriver extends User {
     public DeliveryDriver(String name, String address, String county, CPPFoodDelivery cppFoodDelivery) {
         super(name, address, county);
         cppFoodDelivery.addDeliveryDriver(this);
+        this.cppFoodDelivery = cppFoodDelivery;
     }
 
-    public void addShift(TimeRange shift) {
-        shifts.add(shift);
-    }
-
-    public void removeShift(TimeRange shift) {
-        shifts.remove(shift);
+    public void addShift(TimeShift shift) {
+        TimeRange timeShift = TimeShiftFactory.getInstance().getTimeShift(shift);
+        shifts.add(timeShift);
     }
 
     public boolean isAvailable(LocalTime time) {

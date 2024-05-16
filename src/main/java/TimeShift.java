@@ -1,7 +1,7 @@
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-enum TimeShifts {
+enum TimeShift {
     FirstShift,
     SecondShift,
     ThirdShift
@@ -34,7 +34,7 @@ class TimeShiftFactory {
         return timeShift;
     }
 
-    public TimeRange getTimeShift(TimeShifts timeShift) {
+    public TimeRange getTimeShift(TimeShift timeShift) {
         return switch (timeShift) {
             case FirstShift -> createTimeShift(LocalTime.of(8, 0), LocalTime.of(16, 0));
             case SecondShift -> createTimeShift(LocalTime.of(16, 0), LocalTime.of(0, 0));

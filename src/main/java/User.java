@@ -4,13 +4,11 @@ public class User {
     private String name;
     private String address;
     private String county;
-    private DietaryRestriction dietaryRestriction;
 
-    public User(String name, String address, String county, DietaryRestriction dietaryRestriction) {
+    public User(String name, String address, String county) {
         this.name = name;
         this.address = address;
         this.county = county;
-        this.dietaryRestriction = dietaryRestriction;
     }
 
     public String getName() {
@@ -37,11 +35,4 @@ public class User {
         this.county = county;
     }
 
-    public DietaryRestriction getDietaryRestriction() {
-        return dietaryRestriction;
-    }
-
-    public void setDietaryRestriction(DietaryRestriction dietaryRestriction) {
-        this.dietaryRestriction = dietaryRestriction;
-    }
 }
