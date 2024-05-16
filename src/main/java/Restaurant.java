@@ -71,4 +71,9 @@ public class Restaurant {
         return operatingHours.contains(time);
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
+
 }

@@ -1,8 +1,6 @@
 package Food;
 import Diet.*;
 
-
-
 public enum FoodOption {
     Cheese("Cheese", MacronutrientType.Carb, false, true, false, 1.0),
     Bread("Bread", MacronutrientType.Carb, false, false, false, 2.0),
@@ -13,12 +11,19 @@ public enum FoodOption {
     Beef("Beef", MacronutrientType.Protein, true, false, false, 6),
     Tofu("Tofu", MacronutrientType.Protein, false, false, false, 4),
     Avocado("Avocado", MacronutrientType.Fat, false, false, false, 2),
-    SourCream("Sour Cream", MacronutrientType.Fat, false, true, false, 1),
+    SourCream("SourCream", MacronutrientType.Fat, false, true, false, 1),
     Tuna("Tuna", MacronutrientType.Fat, true, false, false, 5),
     Peanuts("Peanuts", MacronutrientType.Fat, false, false, true, 1),
     Bun("Bun", MacronutrientType.Carb, false, false, false, 1.0);
 
-    private FoodOption(String name, MacronutrientType macronutrientType, boolean isMeat, boolean isDairy, boolean isNut, double price) {
+    private final String name;
+    private final boolean isMeat;
+    private final boolean isDairy;
+    private final boolean isNut;
+    private final double price;
+    private final MacronutrientType macronutrientType;
+
+    FoodOption(String name, MacronutrientType macronutrientType, boolean isMeat, boolean isDairy, boolean isNut, double price) {
         this.name = name;
         this.isMeat = isMeat;
         this.isDairy = isDairy;
@@ -34,15 +39,8 @@ public enum FoodOption {
 
     @Override
     public String toString() {
-        return getName() + " (" + getMacronutrientType().toString() + ")";
+        return getName();
     }
-
-    private final String name;
-    private final boolean isMeat;
-    private final boolean isDairy;
-    private final boolean isNut;
-    private final double price;
-    private final MacronutrientType macronutrientType;
 
     public String getName() {
         return name;

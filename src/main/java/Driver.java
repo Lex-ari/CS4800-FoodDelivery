@@ -14,12 +14,14 @@ public class Driver {
         deliveryDriver.addShift(TimeShift.FirstShift);
 
         ArrayList<Food> foodItems = new ArrayList<>();
-        MenuItem food = new MenuItem("Burger");
+        Food food = new MenuItem();
         FoodOption ingredient1 = FoodOption.Beef;
         FoodOption ingredient2 = FoodOption.Bun;
         food.addIngredient(ingredient1);
         food.addIngredient(ingredient2);
+        food = ToppingManager.addAdditionalCostToItem("Cheese", food);
         foodItems.add(food);
+        System.out.println(food.toString());
         customer.placeOrder(restaurant, foodItems, LocalTime.of(12, 0));
 
         deliveryDriver.finishDelivery();

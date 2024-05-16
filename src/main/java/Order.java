@@ -71,7 +71,16 @@ public class Order {
         this.dietaryRestriction = dietaryRestriction;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                restaurant + " " +
+                customer + " " +
+                deliveryDriver + " " +
+                ", foodItems=" + foodItems +
+                ", orderPickUpTime=" + orderPickUpTime +
+                ", orderDeliveredTime=" + orderDeliveredTime +
+                '}';
+    }
 
 }

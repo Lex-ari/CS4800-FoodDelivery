@@ -22,9 +22,17 @@ public class Customer extends User {
     }
 
     public void setOrderDelivered(Order order) {
-        System.out.println(getName() + " received order from " + order.getRestaurant().getName() + " at " + order.getOrderPickUpTime() + " with food items " + ord);
+        System.out.println(getName() + " received order " + order.toString());
         orders.remove(order);
         deliveryHistory.add(order);
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public ArrayList<Order> getDeliveryHistory() {
+        return deliveryHistory;
     }
 
     public void placeOrder(Restaurant restaurant, ArrayList<Food> foodItems, LocalTime orderPickUpTime) {
@@ -42,5 +50,10 @@ public class Customer extends User {
         {
             System.out.println("Order not placed");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Customer: " + super.toString();
     }
 }

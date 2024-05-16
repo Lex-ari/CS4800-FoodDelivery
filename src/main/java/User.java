@@ -35,4 +35,8 @@ public class User {
         this.county = county;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

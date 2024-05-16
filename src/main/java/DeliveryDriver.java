@@ -46,7 +46,10 @@ public class DeliveryDriver extends User {
         currentOrder = order;
     }
 
-
+    @Override
+    public String toString() {
+        return "Delivery Driver: " + super.toString();
+    }
 
 
 }

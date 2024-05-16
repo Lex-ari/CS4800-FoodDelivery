@@ -1,11 +1,10 @@
 package Food;
 import java.util.ArrayList;
 
-
 public class MenuItem implements Food {
     private final ArrayList<FoodOption> ingredients;
 
-    public MenuItem(String name) {
+    public MenuItem() {
         ingredients = new ArrayList<>();
     }
 
@@ -22,4 +21,17 @@ public class MenuItem implements Food {
         ingredients.add(ingredient);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (FoodOption ingredient : ingredients) {
+            sb.append(ingredient.toString());
+            sb.append("(").append(ingredient.getPrice()).append("), ");
+        }
+        if (!ingredients.isEmpty()) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+        sb.append(" - $").append(getPrice());
+        return sb.toString();
+    }
 }
