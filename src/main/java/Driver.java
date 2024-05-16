@@ -14,19 +14,19 @@ public class Driver {
         deliveryDriver.addShift(TimeShift.FirstShift);
 
         ArrayList<Food> foodItems = new ArrayList<>();
-        Food baseBigMac = new MenuItem();
+        MenuItem baseBigMac = new MenuItem();
         baseBigMac.addIngredient(FoodOption.Beef);
         baseBigMac.addIngredient(FoodOption.Bun);
-        baseBigMac = ToppingManager.addAdditionalCostToItem("Cheese", baseBigMac);
-        baseBigMac = ToppingManager.addAdditionalCostToItem("Ketchup", baseBigMac);
-        foodItems.add(baseBigMac);
-        System.out.println(baseBigMac.toString());
+        baseBigMac.removeDietaryRestrictions(DietaryRestriction.Vegan);
+        Food toppedFood = ToppingManager.addAdditionalCostToItem("Cheese", baseBigMac);
+        toppedFood = ToppingManager.addAdditionalCostToItem("Ketchup", toppedFood);
+        foodItems.add(toppedFood);
+        // System.out.println(baseBigMac.toString());
         customer.placeOrder(restaurant, foodItems, LocalTime.of(12, 0));
 
         deliveryDriver.finishDelivery();
 
 
-
-
+        System.out.println(restaurant.isRestaurantOpen(LocalTime.now()));
     }
 }

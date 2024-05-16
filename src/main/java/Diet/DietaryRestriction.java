@@ -73,7 +73,7 @@ public enum DietaryRestriction {
         }
     }
 
-    public boolean isDietaryRestriction(FoodOption foodOption, DietaryRestriction restriction){
+    public static boolean isDietaryRestriction(FoodOption foodOption, DietaryRestriction restriction){
         return dietaryRestrictionMap.get(foodOption).contains(restriction);
     }
 }

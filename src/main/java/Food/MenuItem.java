@@ -1,8 +1,10 @@
 package Food;
+import Diet.DietaryRestriction;
+
 import java.util.ArrayList;
 
 public class MenuItem implements Food{
-    private final ArrayList<Food> ingredients;
+    private final ArrayList<FoodOption> ingredients;
 
     public MenuItem() {
         ingredients = new ArrayList<>();
@@ -28,5 +30,13 @@ public class MenuItem implements Food{
             string += String.format(" %5.2f", ingredient.getPrice()) + ": " + ingredient + "\n";
         }
         return string;
+    }
+
+    public void removeDietaryRestrictions(DietaryRestriction diet){
+        for (FoodOption ingredient : ingredients){
+            if (DietaryRestriction.isDietaryRestriction(ingredient, diet)){
+                ingredients.remove(ingredient);
+            }
+        }
     }
 }
