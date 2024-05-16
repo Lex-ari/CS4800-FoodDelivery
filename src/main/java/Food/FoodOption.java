@@ -3,7 +3,7 @@ import Diet.*;
 
 
 
-public enum FoodOption {
+public enum FoodOption implements Food {
     Cheese("Cheese", MacronutrientType.Carb, false, true, false),
     Bread("Bread", MacronutrientType.Carb, false, false, false),
     Lentils("Lentils", MacronutrientType.Carb, false, false, false),
