@@ -7,6 +7,7 @@ import java.sql.Array;
 import java.util.*;
 
 public enum DietaryRestriction {
+    None,
     Paleo,
     Vegan,
     Nut;

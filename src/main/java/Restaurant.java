@@ -10,7 +10,7 @@ public class Restaurant {
     private String county;
     private TimeRange operatingHours;
     private CuisineType cuisineStyle;
-    private ArrayList<Food> menu = new ArrayList<>();
+    private final ArrayList<Food> menu = new ArrayList<>();
     private CPPFoodDelivery cppFoodDelivery;
 
 
@@ -69,6 +69,11 @@ public class Restaurant {
 
     public boolean isRestaurantOpen(LocalTime time) {
         return operatingHours.contains(time);
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 
 }

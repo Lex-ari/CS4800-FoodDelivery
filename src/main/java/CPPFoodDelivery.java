@@ -60,7 +60,7 @@ public class CPPFoodDelivery {
         customer.setOrderDelivered(order);
         workingOrders.remove(order);
         completedOrders.add(order);
-
+        System.out.println("Order completed");
     }
 
 }

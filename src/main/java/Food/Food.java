@@ -1,6 +1,7 @@
 package Food;
 
 public interface Food {
-    @Override
     String toString();
+    double getPrice();
+    void addIngredient(FoodOption ingredient);
 }

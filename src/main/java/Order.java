@@ -14,10 +14,13 @@ public class Order {
     private LocalTime orderPickUpTime;
     private LocalTime orderDeliveredTime;
 
-    public Order(Restaurant restaurant, Customer customer) {
+    public Order(Restaurant restaurant, Customer customer, LocalTime orderPickUpTime, List<Food> foodItems, DietaryRestriction dietaryRestriction) {
         this.restaurant = restaurant;
         this.customer = customer;
         this.deliveryDriver = null;
+        this.orderPickUpTime = orderPickUpTime;
+        this.foodItems = foodItems;
+        this.dietaryRestriction = dietaryRestriction;
     }
 
     public void setDeliveryDriver(DeliveryDriver deliveryDriver) {
@@ -64,7 +67,20 @@ public class Order {
         this.orderDeliveredTime = orderDeliveredTime;
     }
 
+    public void setDietaryRestriction(DietaryRestriction dietaryRestriction) {
+        this.dietaryRestriction = dietaryRestriction;
+    }
 
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                restaurant + " " +
+                customer + " " +
+                deliveryDriver + " " +
+                ", foodItems=" + foodItems +
+                ", orderPickUpTime=" + orderPickUpTime +
+                ", orderDeliveredTime=" + orderDeliveredTime +
+                '}';
+    }
 
 }
