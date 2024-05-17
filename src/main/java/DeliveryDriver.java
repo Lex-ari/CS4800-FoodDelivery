@@ -42,10 +42,6 @@ public class DeliveryDriver extends User {
         currentOrder = null;
     }
 
-    public Order getCurrentOrder() {
-        return currentOrder;
-    }
-
     public ArrayList<Order> getCompletedOrders() {
         return completedOrders;
     }
@@ -58,8 +54,6 @@ public class DeliveryDriver extends User {
     public String toString() {
         return "Delivery Driver: " + super.toString();
     }
-
-
     public Order getCurrentOrder(){
         return currentOrder;
     }
