@@ -10,7 +10,7 @@ public class Restaurant {
     private String county;
     private TimeRange operatingHours;
     private CuisineType cuisineStyle;
-    private final ArrayList<Food> menu = new ArrayList<>();
+    private final ArrayList<MenuItem> menu = new ArrayList<>();
     private CPPFoodDelivery cppFoodDelivery;
 
 
@@ -23,11 +23,11 @@ public class Restaurant {
         cppFoodDelivery.addRestaurant(this);
     }
 
-    public void addItemToMenu(Food food) {
+    public void addItemToMenu(MenuItem food) {
         menu.add(food);
     }
 
-    public void removeItemFromMenu(Food food) {
+    public void removeItemFromMenu(MenuItem food) {
         menu.remove(food);
     }
 

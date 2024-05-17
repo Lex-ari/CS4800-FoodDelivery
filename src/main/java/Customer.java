@@ -36,6 +36,10 @@ public class Customer extends User {
     }
 
     public void placeOrder(Restaurant restaurant, ArrayList<Food> foodItems, LocalTime orderPickUpTime) {
+        ArrayList<Food> cleanedFoodItems = new ArrayList<>();
+        for (Food food : foodItems) {
+            cleanedFoodItems.add(food.removeDietaryRestrictions(dietaryRestriction));
+        }
         Order order = new Order(restaurant, this, orderPickUpTime, foodItems, getDietaryRestriction());
         placeOrder(order);
     }
