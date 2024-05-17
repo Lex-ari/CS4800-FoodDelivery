@@ -33,7 +33,16 @@ public class DeliveryDriver extends User {
     }
 
     public boolean canTakeOrder(Order order) {
-        return isAvailable(order.getOrderPickUpTime()) && inCounty(order.getRestaurant().getCounty()) && currentOrder == null;
+       if (!isAvailable(order.getOrderPickUpTime())) {
+            return false;
+        }
+        if (!inCounty(order.getCustomer().getCounty())) {
+            return false;
+        }
+        if (currentOrder != null) {
+            return false;
+        }
+        return true;
     }
 
     public void finishDelivery() {
