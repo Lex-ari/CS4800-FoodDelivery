@@ -11,12 +11,12 @@ public abstract class Topping implements Food {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " (" + price + ") + " + food.toString();
+        return String.format("+%5.2f", this.price) + ": " + "ADD'" + this.getClass().getSimpleName() + "\n"  + this.food.toString();
     }
 
     @Override
     public double getPrice() {
-        System.out.println(this.getClass().getSimpleName() + " (" + price + ") + " + food.getPrice());
+        // System.out.println(String.format("%5.2f", this.price) + ": " + "ADD'" + this.getClass().getSimpleName() + "\n"  + this.food.toString());
         return this.price + food.getPrice();
     }
 

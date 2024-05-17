@@ -1,7 +1,7 @@
 package Food;
 import Diet.*;
 
-public enum FoodOption {
+public enum FoodOption implements Food {
     Cheese("Cheese", MacronutrientType.Carb, false, true, false, 1.0),
     Bread("Bread", MacronutrientType.Carb, false, false, false, 2.0),
     Lentils("Lentils", MacronutrientType.Carb, false, false, false, 1.0),
@@ -60,6 +60,11 @@ public enum FoodOption {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public void addIngredient(FoodOption ingredient) {
+
     }
 
     public MacronutrientType getMacronutrientType() {

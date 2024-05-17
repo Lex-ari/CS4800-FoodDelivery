@@ -1,7 +1,9 @@
 package Food;
+import Diet.DietaryRestriction;
+
 import java.util.ArrayList;
 
-public class MenuItem implements Food {
+public class MenuItem implements Food{
     private final ArrayList<FoodOption> ingredients;
 
     public MenuItem() {
@@ -11,7 +13,7 @@ public class MenuItem implements Food {
     @Override
     public double getPrice() {
         double price = 0;
-        for (FoodOption ingredient : ingredients) {
+        for (Food ingredient : ingredients) {
             price += ingredient.getPrice();
         }
         return price;
@@ -23,15 +25,18 @@ public class MenuItem implements Food {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (FoodOption ingredient : ingredients) {
-            sb.append(ingredient.toString());
-            sb.append("(").append(ingredient.getPrice()).append("), ");
+        String string = "";
+        for (Food ingredient : ingredients) {
+            string += String.format(" %5.2f", ingredient.getPrice()) + ": " + ingredient + "\n";
         }
-        if (!ingredients.isEmpty()) {
-            sb.delete(sb.length() - 2, sb.length());
+        return string;
+    }
+
+    public void removeDietaryRestrictions(DietaryRestriction diet){
+        for (FoodOption ingredient : ingredients){
+            if (DietaryRestriction.isDietaryRestriction(ingredient, diet)){
+                ingredients.remove(ingredient);
+            }
         }
-        sb.append(" - $").append(getPrice());
-        return sb.toString();
     }
 }

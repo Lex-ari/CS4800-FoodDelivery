@@ -73,14 +73,17 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                restaurant + " " +
-                customer + " " +
-                deliveryDriver + " " +
-                ", foodItems=" + foodItems +
-                ", orderPickUpTime=" + orderPickUpTime +
-                ", orderDeliveredTime=" + orderDeliveredTime +
-                '}';
+        String order = "Order #69" + "\n" +
+                        "Restaurant: " + restaurant + "\n" +
+                        "Order placed by: " + customer + "\n" +
+                        "Order fufilled by " + deliveryDriver + "\n";
+        for (Food foodItem : foodItems){
+            order += foodItem;
+            order += String.format("=%5.2f", foodItem.getPrice()) + "\n";
+        }
+        order += "orderPickUpTime=" + orderPickUpTime + "\n" +
+                 "orderDeliveredTime=" + orderDeliveredTime + "\n";
+        return order;
     }
 
 }
