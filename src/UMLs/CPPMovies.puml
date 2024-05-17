@@ -15,7 +15,7 @@ class WatchHistory
 
 + getVideoID(): int
 + getLastWatchTimeStamp(): float
-+ updateLastWatchTimeStamp(timeStampOfLastWatch): void
++ updateLastWatchTimeStamp(timeStampOfLastWatch: float): void
 - incrementNumberOfWatches(): void
 }
 class PaymentManager
@@ -24,7 +24,7 @@ class PaymentManager
 - accountName: String
 - paymentOption: String
 
-+ updatePaymentCard(cardNumber, accountName): void
++ updatePaymentCard(cardNumber: int, accountName: String): void
 + updatePaymentOption(newOption): void
 }
 class Account
@@ -39,14 +39,14 @@ class Account
 - parentalOption: String
 
 + addNewHistory(videoID): void
-+ updateHistoryTimeStamp(videoID, timeStamp): void
++ updateHistoryTimeStamp(videoID: int, timeStamp: float): void
 + getHistory(): List<WatchHistory>
-+ addRating(videoID, rating, review): void
++ addRating(videoID: int, rating: int, review: String): void
 + getRatings(): List<Rating>
-+ updateRating(rating, review): void
-+ updateEmail(email): void
++ updateRating(rating: int, review: String): void
++ updateEmail(email: String): void
 + changeParentalOptions(option): void
-+ changePassword(String): void
++ changePassword(password: String): void
 }
 
 class Rating
@@ -55,8 +55,8 @@ class Rating
 - ratingInStars: int
 - review: String
 
-+ changeRating(ratingInStars): void
-+ changeReview(review): void
++ changeRating(ratingInStars: int): void
++ changeReview(review: String): void
 }
 
 Account *-- PaymentManager
@@ -80,7 +80,7 @@ class VideoPlayer
 - timeStamp: float
 - totalTime: float
 - video: VideoMedia
-+ setVideoMedia(Video): void
++ setVideoMedia(video: Video): void
 + pause(): void
 + play(): void
 + rewind(): void
@@ -125,16 +125,16 @@ class VideoInformation
 class Options
 {
 - languageOption: String
-- languageData:
-- subtitleData:
+- languageData: Media [data from database]
+- subtitleData: String
 
-+ getLanguageData():
-+ getSubtitleData():
++ getLanguageData(): Media [data from database]
++ getSubtitleData(): String
 }
 class VideoMedia
 {
 - videoID: int
-- videoData:
+- videoData: Media [data from database]
 
 + sendVideoStream(): void
 }
