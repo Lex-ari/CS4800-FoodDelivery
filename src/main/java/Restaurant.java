@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import Cuisine.CuisineType;
 import Food.*;
 import java.time.LocalTime;
+import java.util.HashMap;
 
 public class Restaurant {
     private String name;
@@ -10,8 +11,8 @@ public class Restaurant {
     private String county;
     private TimeRange operatingHours;
     private CuisineType cuisineStyle;
-    private final ArrayList<Food> menu = new ArrayList<>();
     private CPPFoodDelivery cppFoodDelivery;
+    private final HashMap<String, Food> menu = new HashMap<String, Food>();
 
 
     public Restaurant(String name, String address, String county, TimeRange operatingHours, CuisineType cuisineStyle, CPPFoodDelivery cppFoodDelivery) {
@@ -23,12 +24,12 @@ public class Restaurant {
         cppFoodDelivery.addRestaurant(this);
     }
 
-    public void addItemToMenu(Food food) {
-        menu.add(food);
+    public Food getFoodFromMenu(String name){
+        return menu.get(name);
     }
 
-    public void removeItemFromMenu(Food food) {
-        menu.remove(food);
+    public void addFoodToMenu(String name, Food food){
+        menu.put(name, food);
     }
 
     public String getName() {
