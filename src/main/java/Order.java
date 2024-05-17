@@ -77,6 +77,10 @@ public class Order {
         this.dietaryRestriction = dietaryRestriction;
     }
 
+    public DeliveryDriver getDeliveryDriver() {
+        return deliveryDriver;
+    }
+
     @Override
     public String toString() {
         String order = "Order:\n" +

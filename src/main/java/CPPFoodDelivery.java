@@ -1,6 +1,5 @@
-import Food.FoodOptionManager;
-
 import java.util.ArrayList;
+import Food.*;
 
 public class CPPFoodDelivery {
     private final ArrayList<Restaurant> restaurants = new ArrayList<>();
@@ -57,6 +56,22 @@ public class CPPFoodDelivery {
         return false;
     }
 
+    public ArrayList<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+
+    public ArrayList<DeliveryDriver> getDeliveryDrivers() {
+        return deliveryDrivers;
+    }
+
+    public void removeRestaurant(Restaurant restaurant) {
+        restaurants.remove(restaurant);
+    }
+
     public void addWorkingOrder(Order order) {
         workingOrders.add(order);
     }
@@ -67,6 +82,14 @@ public class CPPFoodDelivery {
         workingOrders.remove(order);
         completedOrders.add(order);
         System.out.println("Order completed");
+    }
+
+    public ArrayList<Order> getWorkingOrders() {
+        return workingOrders;
+    }
+
+    public ArrayList<Order> getCompletedOrders() {
+        return completedOrders;
     }
 
     public void compelteDeliveries(){
