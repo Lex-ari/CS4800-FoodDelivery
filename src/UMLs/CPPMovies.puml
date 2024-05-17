@@ -80,12 +80,14 @@ class VideoPlayer
 - timeStamp: float
 - totalTime: float
 - video: VideoMedia
+- subtitles: Media [data from database]
 + setVideoMedia(video: Video): void
 + pause(): void
 + play(): void
 + rewind(): void
 + changeLanguage(language: String): void
 + toTimestamp(timestamp: float): void
++ toggleClosedCaptions(): void
 }
 ServiceGUI <-- VideoPlayer
 
@@ -126,10 +128,10 @@ class Options
 {
 - languageOption: String
 - languageData: Media [data from database]
-- subtitleData: String
+- subtitleData: Media [data from database]
 
 + getLanguageData(): Media [data from database]
-+ getSubtitleData(): String
++ getSubtitleData(): Media [data from database]
 }
 class VideoMedia
 {
