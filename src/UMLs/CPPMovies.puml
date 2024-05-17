@@ -1,38 +1,53 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class History
-class PaymentPlan
+class User
+
+
+package AccountDatabase <<Database>> {
+class WatchHistory
+class PaymentManager
 class Account
 class Rating
-class UserGUI
-class Video
+
+Account *-- PaymentManager
+Account *-- WatchHistory
+Account o-- Rating
+}
+
+
+class ServiceGUI
+ServiceGUI <-- User
+
+class VideoPlayer
+ServiceGUI <-- VideoPlayer
+
+class RecommendationSystem
+class CPPMoviesMediator
+CPPMoviesMediator <-- RecommendationSystem
+CPPMoviesMediator <-- ServiceGUI
+CPPMoviesMediator <-- Account
+
+
+
+
+
+package LibraryDatabase <<Database>> {
+class VideoInformation
 class Options
-class Movie
-class TVShowEpisode
-class Season
-class Title
+class VideoMedia
+
+VideoInformation <-- Options
+VideoInformation <-- VideoMedia
+}
+
 class RealServer
 class ProxyServer
-class CPPMoviesMediator
 
-
-
-Account *-- PaymentPlan
-Account *-- History
-Account o-- Rating
-UserGUI o-- Account
-
-CPPMoviesMediator o-- Account: Contains many
-CPPMoviesMediator o-- Video
-Video <-- Options
-Video <|-- Movie
-Video <|-- TVShowEpisode
-
-TVShowEpisode <-- Season
-
-(CPPMoviesMediator, Video) .. ProxyServer
+CPPMoviesMediator <-- ProxyServer
 ProxyServer .. RealServer
+
+RealServer <-- VideoInformation
 
 
 
