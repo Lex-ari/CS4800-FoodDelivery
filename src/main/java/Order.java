@@ -73,7 +73,7 @@ public class Order {
 
     @Override
     public String toString() {
-        String order = "Order #69" + "\n" +
+        String order = "Order:\n" +
                         "Restaurant: " + restaurant + "\n" +
                         "Order placed by: " + customer + "\n" +
                         "Order fufilled by " + deliveryDriver + "\n";

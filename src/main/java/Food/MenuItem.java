@@ -32,11 +32,21 @@ public class MenuItem implements Food{
         return string;
     }
 
-    public void removeDietaryRestrictions(DietaryRestriction diet){
+    public MenuItem copy(){
+        MenuItem copy = new MenuItem();
+        for (FoodOption ingredient : ingredients){
+            copy.addIngredient(ingredient);
+        }
+        return copy;
+    }
+
+    public Food removeDietaryRestrictions(DietaryRestriction diet){
+        MenuItem copy = copy();
         for (FoodOption ingredient : ingredients){
             if (DietaryRestriction.isDietaryRestriction(ingredient, diet)){
-                ingredients.remove(ingredient);
+                copy.ingredients.remove(ingredient);
             }
         }
+        return copy;
     }
 }

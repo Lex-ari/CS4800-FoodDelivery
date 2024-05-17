@@ -12,7 +12,7 @@ public class Restaurant {
     private TimeRange operatingHours;
     private CuisineType cuisineStyle;
     private CPPFoodDelivery cppFoodDelivery;
-    private final HashMap<String, Food> menu = new HashMap<String, Food>();
+    private final HashMap<String, MenuItem> menu = new HashMap<String, MenuItem>();
 
 
     public Restaurant(String name, String address, String county, TimeRange operatingHours, CuisineType cuisineStyle, CPPFoodDelivery cppFoodDelivery) {
@@ -24,11 +24,11 @@ public class Restaurant {
         cppFoodDelivery.addRestaurant(this);
     }
 
-    public Food getFoodFromMenu(String name){
+    public MenuItem getFoodFromMenu(String name){
         return menu.get(name);
     }
 
-    public void addFoodToMenu(String name, Food food){
+    public void addFoodToMenu(String name, MenuItem food){
         menu.put(name, food);
     }
 
