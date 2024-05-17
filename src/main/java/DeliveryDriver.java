@@ -52,4 +52,8 @@ public class DeliveryDriver extends User {
     }
 
 
+    public Order getCurrentOrder(){
+        return currentOrder;
+    }
+
 }

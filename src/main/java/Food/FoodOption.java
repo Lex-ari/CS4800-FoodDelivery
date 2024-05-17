@@ -14,7 +14,22 @@ public enum FoodOption implements Food {
     SourCream("SourCream", MacronutrientType.Fat, false, true, false, 1),
     Tuna("Tuna", MacronutrientType.Fat, true, false, false, 5),
     Peanuts("Peanuts", MacronutrientType.Fat, false, false, true, 1),
-    Bun("Bun", MacronutrientType.Carb, false, false, false, 1.0);
+    Bun("Bun", MacronutrientType.Carb, false, false, false, 1.0),
+    GroundPork("Ground Pork", MacronutrientType.Protein, true, false, false, 6.0),
+    SichuanPepper("Sichuan Pepper", MacronutrientType.Carb, false, false, false, 1.0),
+    Garlic("Garlic", MacronutrientType.Carb, false, false, false, 1.0),
+    Ginger("Ginger", MacronutrientType.Carb, false, false, false, 1.0),
+    SoySauce("Soy Sauce", MacronutrientType.Carb, false, false, false, 1.0),
+    ChiliBeanPaste("Chili Bean Paste", MacronutrientType.Carb, false, false, false, 1.0),
+    Pasta("Pasta", MacronutrientType.Carb, false, false, false, 2.0),
+    TomatoSauce("Tomato Sauce", MacronutrientType.Carb, false, false, false, 1.0),
+    GroundBeef("Ground Beef", MacronutrientType.Protein, true, false, false, 6.0),
+    Onion("Onion", MacronutrientType.Carb, false, false, false, 0.5),
+    OliveOil("Olive Oil", MacronutrientType.Fat, false, false, false, 2.0),
+    Basil("Basil", MacronutrientType.Carb, false, false, false, 1.0),
+    Oregano("Oregano", MacronutrientType.Carb, false, false, false, 1.0),
+    ParmesanCheese("Parmesan Cheese", MacronutrientType.Fat, false, true, false, 2.0);
+
 
     private final String name;
     private final boolean isMeat;
