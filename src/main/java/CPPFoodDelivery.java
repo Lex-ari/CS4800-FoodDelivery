@@ -7,6 +7,10 @@ public class CPPFoodDelivery {
     private final ArrayList<Order> workingOrders = new ArrayList<>();
     private final ArrayList<Order> completedOrders = new ArrayList<>();
 
+    public CPPFoodDelivery() {
+        FoodOptionManager.getInstance();
+    }
+
     public void addRestaurant(Restaurant restaurant) {
         System.out.println("Restaurant " + restaurant.getName() + " added");
         restaurants.add(restaurant);
@@ -87,10 +91,9 @@ public class CPPFoodDelivery {
         return completedOrders;
     }
 
-
-    public void completeDeliveries() {
-        for (DeliveryDriver driver : deliveryDrivers) {
-            if (driver.getCurrentOrder() != null) {
+    public void compelteDeliveries(){
+        for (DeliveryDriver driver : deliveryDrivers){
+            if (driver.getCurrentOrder() != null){
                 driver.finishDelivery();
             }
         }

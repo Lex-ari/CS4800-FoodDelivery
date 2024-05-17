@@ -23,6 +23,12 @@ public class Order {
         this.dietaryRestriction = dietaryRestriction;
     }
 
+    public Order(Restaurant restaurant, Customer customer, LocalTime orderPickUpTime){
+        this.restaurant = restaurant;
+        this.customer = customer;
+        this.orderPickUpTime = orderPickUpTime;
+    }
+
     public void setDeliveryDriver(DeliveryDriver deliveryDriver) {
         this.deliveryDriver = deliveryDriver;
     }
