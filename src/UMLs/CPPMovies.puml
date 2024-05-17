@@ -6,9 +6,55 @@ class User
 
 package AccountDatabase <<Database>> {
 class WatchHistory
+{
+- videoID: int
+- timeStampOfLastWatch: float
+- numberOfWatches: int
+
++ getVideoID(): int
++ getLastWatchTimeStamp(): float
++ updateLastWatchTimeStamp(timeStampOfLastWatch): void
+- incrementNumberOfWatches(): void
+}
 class PaymentManager
+{
+- cardNumber: String
+- accountName: String
+- paymentOption: String
+
++ updatePaymentCard(cardNumber, accountName): void
++ updatePaymentOption(newOption): void
+}
 class Account
+{
+- accountID: int
+- history: Map<int, WatchHistory>
+- ratings: Map<int, Rating>
+- paymentPlan: PaymentManager
+- userName: String
+- password: String
+- email: String
+- parentalOption: String
+
++ addNewHistory(videoID): void
++ updateHistoryTimeStamp(videoID, timeStamp): void
++ getHistory(): List<WatchHistory>
++ addRating(videoID, rating, review): void
++ getRatings(): List<Rating>
++ updateRating(rating, review): void
++ updateEmail(email): void
++ changeParentalOptions(option): void
++ changePassword(String): void
+}
 class Rating
+{
+- videoID: int
+- ratingInStars: int
+- review: String
+
++ changeRating(ratingInStars): void
++ changeReview(review): void
+}
 
 Account *-- PaymentManager
 Account *-- WatchHistory
@@ -17,13 +63,27 @@ Account o-- Rating
 
 
 class ServiceGUI
+{
+
+}
 ServiceGUI <-- User
 
 class VideoPlayer
+{
+
+}
 ServiceGUI <-- VideoPlayer
 
 class RecommendationSystem
+{
++ compareOnRatings(accountID): List<int>
++ compareOnWatchHistory(accountID): List<int>
+
+}
 class CPPMoviesMediator
+{
+
+}
 CPPMoviesMediator <-- RecommendationSystem
 CPPMoviesMediator <-- ServiceGUI
 CPPMoviesMediator <-- Account
@@ -34,15 +94,50 @@ CPPMoviesMediator <-- Account
 
 package LibraryDatabase <<Database>> {
 class VideoInformation
+{
+- OptionsForVideo: List<Options>
+- media: VideoMedia
+- series: String
+- videoTitle: String
+- videoLength: String
+- videoDescription: String
+- videoOtherInformation: String
+
++ getVideoID(): int
++ getAllVideoInformation(): List<String>
+
+}
 class Options
+{
+- languageOption: String
+- languageData:
+- subtitleData:
+
++ getLanguageData():
++ getSubtitleData():
+}
 class VideoMedia
+{
+- videoID: int
+- videoData:
+
++ sendVideoStream(): void
+}
 
 VideoInformation <-- Options
 VideoInformation <-- VideoMedia
 }
 
 class RealServer
+{
+- libraryOfVideos: Map<int, VideoInformation>
+}
 class ProxyServer
+{
+- higherServer: Server
+
+
+}
 
 CPPMoviesMediator <-- ProxyServer
 ProxyServer .. RealServer
