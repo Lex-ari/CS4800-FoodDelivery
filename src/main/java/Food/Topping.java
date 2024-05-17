@@ -23,6 +23,11 @@ public abstract class Topping implements Food {
     public void addIngredient(FoodOption ingredient) {
         throw new UnsupportedOperationException("Cannot add ingredients to a topping.");
     }
+
+    public Food removeDietaryRestrictions(Diet.DietaryRestriction diet) {
+        this.food = this.food.removeDietaryRestrictions(diet);
+        return this;
+    }
 }
 
 class Lettuce extends Topping {

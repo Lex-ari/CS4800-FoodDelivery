@@ -67,6 +67,10 @@ public enum FoodOption implements Food {
 
     }
 
+    public Food removeDietaryRestrictions(DietaryRestriction diet) {
+        throw new UnsupportedOperationException();
+    }
+
     public MacronutrientType getMacronutrientType() {
         return macronutrientType;
     }

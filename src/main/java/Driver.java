@@ -17,7 +17,7 @@ public class Driver {
         MenuItem baseBigMac = new MenuItem();
         baseBigMac.addIngredient(FoodOption.Beef);
         baseBigMac.addIngredient(FoodOption.Bun);
-        baseBigMac.removeDietaryRestrictions(DietaryRestriction.Vegan);
+        //baseBigMac.removeDietaryRestrictions(DietaryRestriction.Vegan);
         Food toppedFood = ToppingManager.addAdditionalCostToItem("Cheese", baseBigMac);
         toppedFood = ToppingManager.addAdditionalCostToItem("Ketchup", toppedFood);
         foodItems.add(toppedFood);
