@@ -9,7 +9,7 @@ public class Driver {
     public static void main(String[] args){
         CPPFoodDelivery cppFoodDelivery = new CPPFoodDelivery();
         Restaurant restaurant = new Restaurant("McDonalds", "1234 Main St", "Los Angeles", new TimeRange(LocalTime.of(8, 0), LocalTime.of(22, 0)), CuisineType.American, cppFoodDelivery);
-        Customer customer = new Customer("John Doe", "5678 Elm St", "Los Angeles", cppFoodDelivery, DietaryRestriction.None);
+        Customer customer = new Customer("John Doe", "5678 Elm St", "Los Angeles", cppFoodDelivery, DietaryRestriction.Vegan);
         DeliveryDriver deliveryDriver = new DeliveryDriver("Jane Doe", "91011 Oak St", "Los Angeles", cppFoodDelivery);
         deliveryDriver.addShift(TimeShift.FirstShift);
 

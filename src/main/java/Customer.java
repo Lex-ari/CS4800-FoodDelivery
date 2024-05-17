@@ -40,7 +40,7 @@ public class Customer extends User {
         for (Food food : foodItems) {
             cleanedFoodItems.add(food.removeDietaryRestrictions(dietaryRestriction));
         }
-        Order order = new Order(restaurant, this, orderPickUpTime, foodItems, getDietaryRestriction());
+        Order order = new Order(restaurant, this, orderPickUpTime, cleanedFoodItems, getDietaryRestriction());
         placeOrder(order);
     }
 

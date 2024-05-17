@@ -1,7 +1,7 @@
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-enum TimeShift {
+public enum TimeShift {
     FirstShift,
     SecondShift,
     ThirdShift

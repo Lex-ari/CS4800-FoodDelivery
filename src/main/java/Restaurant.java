@@ -72,6 +72,10 @@ public class Restaurant {
         return operatingHours.contains(time);
     }
 
+    public HashMap<String, MenuItem> getMenu() {
+        return menu;
+    }
+
     @Override
     public String toString() {
         return getName();

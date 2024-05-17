@@ -42,6 +42,14 @@ public class DeliveryDriver extends User {
         currentOrder = null;
     }
 
+    public Order getCurrentOrder() {
+        return currentOrder;
+    }
+
+    public ArrayList<Order> getCompletedOrders() {
+        return completedOrders;
+    }
+
     public void assignOrder(Order order) {
         currentOrder = order;
     }
