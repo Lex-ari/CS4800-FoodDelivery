@@ -1,7 +1,9 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class User
+class User {
++ inputCommand(command: String): void
+}
 
 
 package AccountDatabase <<Database>> {
@@ -46,6 +48,7 @@ class Account
 + changeParentalOptions(option): void
 + changePassword(String): void
 }
+
 class Rating
 {
 - videoID: int
@@ -64,13 +67,25 @@ Account o-- Rating
 
 class ServiceGUI
 {
+- account: int
 
++ logIn(username: String, password: String): void
++ register(username: String, password: String): boolean
++ search(title: String): List<VideoInformation>
 }
 ServiceGUI <-- User
 
 class VideoPlayer
 {
-
+- timeStamp: float
+- totalTime: float
+- video: VideoMedia
++ setVideoMedia(Video): void
++ pause(): void
++ play(): void
++ rewind(): void
++ changeLanguage(language: String): void
++ toTimestamp(timestamp: float): void
 }
 ServiceGUI <-- VideoPlayer
 
@@ -80,16 +95,16 @@ class RecommendationSystem
 + compareOnWatchHistory(accountID): List<int>
 
 }
+
 class CPPMoviesMediator
 {
-
++getRecommended(): List<VideoInformation>
++getVideo(videoID: int): VideoInformation
++search(query: String): List<VideoInformation>
 }
-CPPMoviesMediator <-- RecommendationSystem
-CPPMoviesMediator <-- ServiceGUI
-CPPMoviesMediator <-- Account
-
-
-
+CPPMoviesMediator o-- RecommendationSystem
+CPPMoviesMediator o-- ServiceGUI
+CPPMoviesMediator"*" o-- "1"Account: Accesses
 
 
 package LibraryDatabase <<Database>> {
@@ -105,8 +120,8 @@ class VideoInformation
 
 + getVideoID(): int
 + getAllVideoInformation(): List<String>
-
 }
+
 class Options
 {
 - languageOption: String
@@ -124,8 +139,13 @@ class VideoMedia
 + sendVideoStream(): void
 }
 
-VideoInformation <-- Options
-VideoInformation <-- VideoMedia
+VideoInformation *-- Options
+VideoInformation *-- VideoMedia
+}
+
+interface VideoServer {
++ searchByID(id: int): VideoInformation
++ searchByKeyword(key: String) List<VideoInformation>
 }
 
 class RealServer
@@ -135,16 +155,18 @@ class RealServer
 class ProxyServer
 {
 - higherServer: Server
-
-
+- cachedVideos: Map<int, VideoInformation>
 }
 
-CPPMoviesMediator <-- ProxyServer
-ProxyServer .. RealServer
+CPPMoviesMediator <-- VideoServer
+VideoServer <|-- ProxyServer
+VideoServer <|-- RealServer
+ProxyServer <..> RealServer: " Could be many"
 
 RealServer <-- VideoInformation
 
-
-
+note bottom of User
+    User inputs from here!!!
+end note
 
 @enduml
