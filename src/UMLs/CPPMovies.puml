@@ -1,0 +1,174 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class User {
++ inputCommand(command: String): void
+}
+
+
+package AccountDatabase <<Database>> {
+class WatchHistory
+{
+- videoID: int
+- timeStampOfLastWatch: float
+- numberOfWatches: int
+
++ getVideoID(): int
++ getLastWatchTimeStamp(): float
++ updateLastWatchTimeStamp(timeStampOfLastWatch: float): void
+- incrementNumberOfWatches(): void
+}
+class PaymentManager
+{
+- cardNumber: String
+- accountName: String
+- paymentOption: String
+
++ updatePaymentCard(cardNumber: int, accountName: String): void
++ updatePaymentOption(newOption): void
+}
+class Account
+{
+- accountID: int
+- history: Map<int, WatchHistory>
+- ratings: Map<int, Rating>
+- paymentPlan: PaymentManager
+- userName: String
+- password: String
+- email: String
+- parentalOption: String
+
++ addNewHistory(videoID): void
++ updateHistoryTimeStamp(videoID: int, timeStamp: float): void
++ getHistory(): List<WatchHistory>
++ addRating(videoID: int, rating: int, review: String): void
++ getRatings(): List<Rating>
++ updateRating(rating: int, review: String): void
++ updateEmail(email: String): void
++ changeParentalOptions(option): void
++ changePassword(password: String): void
+}
+
+class Rating
+{
+- videoID: int
+- ratingInStars: int
+- review: String
+
++ changeRating(ratingInStars: int): void
++ changeReview(review: String): void
+}
+
+Account *-- PaymentManager
+Account *-- WatchHistory
+Account o-- Rating
+}
+
+
+class ServiceGUI
+{
+- account: int
+
++ logIn(username: String, password: String): void
++ register(username: String, password: String): boolean
++ search(title: String): List<VideoInformation>
+}
+ServiceGUI <-- User
+
+class VideoPlayer
+{
+- timeStamp: float
+- totalTime: float
+- video: VideoMedia
+- subtitles: Media [data from database]
++ setVideoMedia(video: Video): void
++ pause(): void
++ play(): void
++ rewind(): void
++ changeLanguage(language: String): void
++ toTimestamp(timestamp: float): void
++ toggleClosedCaptions(): void
+}
+ServiceGUI <-- VideoPlayer
+
+class RecommendationSystem
+{
++ compareOnRatings(accountID): List<int>
++ compareOnWatchHistory(accountID): List<int>
+
+}
+
+class CPPMoviesMediator
+{
++getRecommended(): List<VideoInformation>
++getVideo(videoID: int): VideoInformation
++search(query: String): List<VideoInformation>
+}
+CPPMoviesMediator o-- RecommendationSystem
+CPPMoviesMediator o-- ServiceGUI
+CPPMoviesMediator"*" o-- "1"Account: Accesses
+
+
+package LibraryDatabase <<Database>> {
+class VideoInformation
+{
+- OptionsForVideo: List<Options>
+- media: VideoMedia
+- series: String
+- videoTitle: String
+- videoLength: String
+- videoDescription: String
+- videoOtherInformation: String
+
++ getVideoID(): int
++ getAllVideoInformation(): List<String>
+}
+
+class Options
+{
+- languageOption: String
+- languageData: Media [data from database]
+- subtitleData: Media [data from database]
+
++ getLanguageData(): Media [data from database]
++ getSubtitleData(): Media [data from database]
+}
+class VideoMedia
+{
+- videoID: int
+- videoData: Media [data from database]
+
++ sendVideoStream(): void
+}
+
+VideoInformation *-- Options
+VideoInformation *-- VideoMedia
+}
+
+interface VideoServer {
++ searchByID(id: int): VideoInformation
++ searchByKeyword(key: String) List<VideoInformation>
+}
+
+class RealServer
+{
+- libraryOfVideos: Map<int, VideoInformation>
+}
+class ProxyServer
+{
+- higherServer: Server
+- cachedVideos: Map<int, VideoInformation>
+}
+
+CPPMoviesMediator <-- VideoServer
+VideoServer <|-- ProxyServer
+VideoServer <|-- RealServer
+ProxyServer <..> RealServer: " Could be many"
+
+RealServer <-- VideoInformation
+
+note bottom of User
+    User inputs from here!!!
+end note
+
+@enduml
