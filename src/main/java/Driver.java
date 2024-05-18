@@ -107,7 +107,7 @@ public class Driver {
         Customer customerIsabella = new Customer("Isabella Wong", "2223 Plum St", "San Bernardino", cppFoodDelivery, DietaryRestriction.None);
         Customer customerJack = new Customer("Jack Garcia", "2425 Raspberry St", "San Bernardino", cppFoodDelivery, DietaryRestriction.None);
 
-
+        System.out.println(System.lineSeparator() +"--- Order #1 ----");
         Order order1 = new Order(mcDonalds, customerAlice, LocalTime.of(3, 0));
         Food specialBigMac = mcDonalds.getFoodFromMenu("Big Mac");
         specialBigMac = specialBigMac.removeDietaryRestrictions(DietaryRestriction.Vegan);
@@ -116,6 +116,7 @@ public class Driver {
         customerAlice.placeOrder(order1);
 
 
+        System.out.println(System.lineSeparator() +"--- Order #2 ----");
         Order order2 = new Order(mcDonalds, customerBob, LocalTime.of(13, 0));
         Food specialQPounder = mcDonalds.getFoodFromMenu("Quarter Pounder");
         specialQPounder = ToppingManager.addAdditionalCostToItem("Bacon", specialQPounder);
@@ -123,6 +124,7 @@ public class Driver {
         customerBob.placeOrder(order2);
 
 
+        System.out.println(System.lineSeparator() +"--- Order #3 ----");
         Order order3 = new Order(mcDonalds, customerCatherine, LocalTime.of(22, 0));
         Food specialMcCrispy = mcDonalds.getFoodFromMenu("McCrispy");
         specialMcCrispy = ToppingManager.addAdditionalCostToItem("Cheese", specialMcCrispy);
@@ -131,6 +133,7 @@ public class Driver {
         customerCatherine.placeOrder(order3);
 
 
+        System.out.println(System.lineSeparator() +"--- Order #4 ----");
         Order order4 = new Order(pandaExpress, customerDaniel, LocalTime.of(15, 0));
         Food specialOrangeChicken = pandaExpress.getFoodFromMenu("Orange Chicken");
         specialOrangeChicken = ToppingManager.addAdditionalCostToItem("Ketchup", specialOrangeChicken);
@@ -138,6 +141,7 @@ public class Driver {
         customerDaniel.placeOrder(order4);
 
 
+        System.out.println(System.lineSeparator() +"--- Order #5 ----");
         Order order5 = new Order(pandaExpress, customerElizabeth, LocalTime.of(16, 0));
         Food specialMapoTofu = pandaExpress.getFoodFromMenu("Mapo Tofu");
         specialMapoTofu = specialMapoTofu.removeDietaryRestrictions(DietaryRestriction.Vegan);
@@ -145,6 +149,7 @@ public class Driver {
         customerElizabeth.placeOrder(order5);
 
 
+        System.out.println(System.lineSeparator() +"--- Order #6 ----");
         Order order6 = new Order(fancySpaghet, customerFrank, LocalTime.of(15, 0));
         Food specialSpaghet = fancySpaghet.getFoodFromMenu("Spaghet");
         specialSpaghet = ToppingManager.addAdditionalCostToItem("Cheese", specialSpaghet);
@@ -152,6 +157,7 @@ public class Driver {
         customerFrank.placeOrder(order6);
 
 
+        System.out.println(System.lineSeparator() +"--- Order #7 ----");
         Order order7 = new Order(makomae, customerGrace, LocalTime.of(15, 0));
         Food specialSalmon = makomae.getFoodFromMenu("Salmon");
         specialSalmon = ToppingManager.addAdditionalCostToItem("Lettuce", specialSalmon);
@@ -159,6 +165,7 @@ public class Driver {
         customerGrace.placeOrder(order7);
 
 
+        System.out.println(System.lineSeparator() +"--- Order #8 ----");
         Order order8 = new Order(mcDonalds, customerHenry, LocalTime.of(14, 0));
         Food specialBigMac2 = mcDonalds.getFoodFromMenu("Big Mac");
         specialBigMac2 = ToppingManager.addAdditionalCostToItem("Bacon", specialBigMac2);
@@ -167,6 +174,7 @@ public class Driver {
         customerHenry.placeOrder(order8);
 
 
+        System.out.println(System.lineSeparator() +"--- Order #9 ----");
         Order order9 = new Order(mcDonalds, customerIsabella, LocalTime.of(11, 0));
         Food specialQPounder2 = mcDonalds.getFoodFromMenu("Quarter Pounder");
         specialQPounder2 = ToppingManager.addAdditionalCostToItem("Cheese", specialQPounder2);
@@ -174,12 +182,14 @@ public class Driver {
         customerIsabella.placeOrder(order9);
 
 
+        System.out.println(System.lineSeparator() + "--- Order #10 ----");
         Order order10 = new Order(pandaExpress, customerJack, LocalTime.of(12, 0));
         Food specialOrangeChicken2 = pandaExpress.getFoodFromMenu("Orange Chicken");
         specialOrangeChicken2 = specialOrangeChicken2.removeDietaryRestrictions(DietaryRestriction.Paleo);
         order10.addFoodItem(specialOrangeChicken2);
         customerJack.placeOrder(order10);
 
+        System.out.println(System.lineSeparator() + "Completing Deliveries");
         cppFoodDelivery.compelteDeliveries();
 
     }
