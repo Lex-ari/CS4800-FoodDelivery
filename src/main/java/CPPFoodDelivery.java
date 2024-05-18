@@ -38,7 +38,7 @@ public class CPPFoodDelivery {
             return false;
         }
 
-        if (!restaurant.isRestaurantOpen(order.getOrderPickUpTime())) {
+        if (!restaurant.isRestaurantOpen(order.getOrderCreationTime())) {
             System.out.println("Restaurant is closed");
             return false;
         }

@@ -33,7 +33,7 @@ public class DeliveryDriver extends User {
     }
 
     public boolean canTakeOrder(Order order) {
-       if (!isAvailable(order.getOrderPickUpTime())) {
+       if (!isAvailable(order.getOrderCreationTime())) {
             return false;
         }
         if (!inCounty(order.getCustomer().getCounty())) {
@@ -61,6 +61,9 @@ public class DeliveryDriver extends User {
 
     public void assignOrder(Order order) {
         currentOrder = order;
+        LocalTime deliveryStartTime = currentOrder.getOrderCreationTime();
+        int random = (int) (Math.random() * 15) + 15;
+        currentOrder.setOrderPickUpTime(deliveryStartTime.plusMinutes(random));
     }
 
     @Override
