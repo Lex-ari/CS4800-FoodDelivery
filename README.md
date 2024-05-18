@@ -6,6 +6,13 @@ design pattern for adding and getting particular food options that belong to spe
 proteins, and fats. That way, as the carbs, proteins, fats change with new additions or removals, or even the 
 introduction of a new particular nutrient group, it would be easy to facilitate the transfer of information.
 
+Also used for getting TimeShifts, expanded on in Flyweight.
+
+Flyweight:
+The TimeShifts between drivers use the flyweight pattern to prevent the memory overhead of each driver having its own TimeShift
+as there are only three possibilities. A Singleton Factory is used to get the TimeShifts for the drivers which does not create a new one
+if that timeshift has been created already.
+
 Decorator: Used as the main implementation of toppings. Toppings inherit the Food properties, and allows to add new
 behavior of a particular Topping by calling its private subclasses. Adding new "toppings" to the original Food object
 is simple and linear in its implementation. We do not know what "Food" we would have until runtime, and using the
@@ -21,10 +28,8 @@ communicate status, and facilitate transfer of orders and food. That way, the un
 and driver does not have to depend on each other as long as they can communicate with the mediator with their
 intentions.
 
-Singleton: Used for instantiated databases and data retrieval. The CPPFoodDelivery mediator is a singleton, as it is a
-general interface that is meant to communicate with all objects. All objects reference this particular instance, which
-acts as a global object and controls access. The single instance allows the coordination of all food deliveries, which
-would prevent double orders or multiple unnecessary instances of the food control system.
+Singleton: Used for instantiated databases and data retrieval. The TimeShiftFactory is a singleton, to facilitate the use of the flyweight pattern
+the TimeShiftFactory is a singleton preventing multiple instances being created and breaking the flyweight design.
 
 
 
