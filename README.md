@@ -35,8 +35,8 @@ Used for instantiated databases and data retrieval. The TimeShiftFactory is a si
 the TimeShiftFactory is a singleton preventing multiple instances being created and breaking the flyweight design.
 
 
-
-
+---
+# Project Description
 
 At least 4 Design Patterns(Must state design patterns used in implementation and why you selected)
 
