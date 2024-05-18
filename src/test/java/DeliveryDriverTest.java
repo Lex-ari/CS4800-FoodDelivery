@@ -65,7 +65,7 @@ public class DeliveryDriverTest {
 
     @Test
     public void testFinishDelivery() {
-        driver.assignOrder(order);
+        cppFoodDelivery.placeOrder(order);
         driver.finishDelivery();
         assertTrue(driver.getCompletedOrders().contains(order));
         assertNull(driver.getCurrentOrder());
