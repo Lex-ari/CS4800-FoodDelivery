@@ -81,7 +81,7 @@ public class CPPFoodDelivery {
         customer.setOrderDelivered(order);
         workingOrders.remove(order);
         completedOrders.add(order);
-        System.out.println("Order delivered to " + customer.getName() + " from " + order.getRestaurant().getName() + " fulfilled by " + order.getDeliveryDriver().getName());
+        System.out.println("Order delivered to " + customer.getName() + " from " + order.getRestaurant().getName() + " fulfilled by " + order.getDeliveryDriver().getName() + " at " + order.getOrderDeliveredTime());
         System.out.println("---------------------------------------------");
 
     }

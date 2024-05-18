@@ -46,6 +46,10 @@ public class DeliveryDriver extends User {
     }
 
     public void finishDelivery() {
+        LocalTime deliveryStartTime = currentOrder.getOrderPickUpTime();
+        int random = (int) (Math.random() * 15) + 15;
+        LocalTime deliveryEndTime = deliveryStartTime.plusMinutes(random);
+        currentOrder.setOrderDeliveredTime(deliveryEndTime);
         completedOrders.add(currentOrder);
         cppFoodDelivery.completeOrder(currentOrder);
         currentOrder = null;
