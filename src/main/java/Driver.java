@@ -3,9 +3,7 @@ import Diet.*;
 import Food.*;
 import Food.MenuItem;
 
-import java.awt.*;
 import java.time.LocalTime;
-import java.util.ArrayList;
 
 public class Driver {
 
@@ -190,7 +188,7 @@ public class Driver {
         customerJack.placeOrder(order10);
 
         System.out.println(System.lineSeparator() + "Completing Deliveries");
-        cppFoodDelivery.compelteDeliveries();
+        cppFoodDelivery.completeDeliveries();
 
     }
 }

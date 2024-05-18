@@ -11,22 +11,23 @@ public class Order {
     private DeliveryDriver deliveryDriver;
     private DietaryRestriction dietaryRestriction;
     private List<Food> foodItems = new ArrayList<>();
-    private LocalTime orderPickUpTime;
+    private LocalTime orderCreationTime;
     private LocalTime orderDeliveredTime;
+    private LocalTime orderPickUpTime;
 
-    public Order(Restaurant restaurant, Customer customer, LocalTime orderPickUpTime, List<Food> foodItems, DietaryRestriction dietaryRestriction) {
+    public Order(Restaurant restaurant, Customer customer, LocalTime orderCreationTime, List<Food> foodItems, DietaryRestriction dietaryRestriction) {
         this.restaurant = restaurant;
         this.customer = customer;
         this.deliveryDriver = null;
-        this.orderPickUpTime = orderPickUpTime;
+        this.orderCreationTime = orderCreationTime;
         this.foodItems = foodItems;
         this.dietaryRestriction = dietaryRestriction;
     }
 
-    public Order(Restaurant restaurant, Customer customer, LocalTime orderPickUpTime){
+    public Order(Restaurant restaurant, Customer customer, LocalTime orderCreationTime){
         this.restaurant = restaurant;
         this.customer = customer;
-        this.orderPickUpTime = orderPickUpTime;
+        this.orderCreationTime = orderCreationTime;
     }
 
     public void setDeliveryDriver(DeliveryDriver deliveryDriver) {
@@ -61,8 +62,16 @@ public class Order {
         return foodItems;
     }
 
+    public LocalTime getOrderCreationTime() {
+        return orderCreationTime;
+    }
+
     public LocalTime getOrderPickUpTime() {
         return orderPickUpTime;
+    }
+
+    public void setOrderPickUpTime(LocalTime orderPickUpTime) {
+        this.orderPickUpTime = orderPickUpTime;
     }
 
     public LocalTime getOrderDeliveredTime() {
@@ -91,7 +100,8 @@ public class Order {
             order += foodItem;
             order += String.format("=%5.2f", foodItem.getPrice()) + "\n";
         }
-        order += "orderPickUpTime=" + orderPickUpTime + "\n" +
+        order += "orderCreationTime=" + orderCreationTime + "\n" +
+                 "orderPickUpTime=" + orderPickUpTime + "\n" +
                  "orderDeliveredTime=" + orderDeliveredTime + "\n";
         return order;
     }

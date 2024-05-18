@@ -38,7 +38,7 @@ public class CPPFoodDelivery {
             return false;
         }
 
-        if (!restaurant.isRestaurantOpen(order.getOrderPickUpTime())) {
+        if (!restaurant.isRestaurantOpen(order.getOrderCreationTime())) {
             System.out.println("Restaurant is closed");
             return false;
         }
@@ -94,7 +94,7 @@ public class CPPFoodDelivery {
         return completedOrders;
     }
 
-    public void compelteDeliveries(){
+    public void completeDeliveries(){
         for (DeliveryDriver driver : deliveryDrivers){
             if (driver.getCurrentOrder() != null){
                 driver.finishDelivery();
