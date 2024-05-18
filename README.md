@@ -1,3 +1,43 @@
+# Design Patterns Used:
+Factory: Use to facilitate the creation of Toppings. This way we don't need to call the specific task in order to 
+instantiate it and use it. We let ToppingManager decide which Topping we want to instantiate. Allows us to choose later
+on of what we want to instantiate, as well as any additions to the Toppings in the future. We also use the factory
+design pattern for adding and getting particular food options that belong to specific nutrient groups, such as carbs, 
+proteins, and fats. That way, as the carbs, proteins, fats change with new additions or removals, or even the 
+introduction of a new particular nutrient group, it would be easy to facilitate the transfer of information.
+
+Also used for getting TimeShifts, expanded on in Flyweight.
+
+## Flyweight:
+The TimeShifts between drivers use the flyweight pattern to prevent the memory overhead of each driver having its own TimeShift
+as there are only three possibilities. A Singleton Factory is used to get the TimeShifts for the drivers which does not create a new one
+if that timeshift has been created already.
+
+## Decorator: 
+Used as the main implementation of toppings. Toppings inherit the Food properties, and allows to add new
+behavior of a particular Topping by calling its private subclasses. Adding new "toppings" to the original Food object
+is simple and linear in its implementation. We do not know what "Food" we would have until runtime, and using the
+decorator design pattern allows us to make additions for a future Food object. It mirrors the "assembly" part of real
+life food, where adding a new topping is similar to having the original food + the new topping is also food in its
+final form.
+
+## Mediator: 
+CPPFoodDelivery, where it is the designated single object to handle complex operations. Each actor in this
+system would need to communicate to each other in some way, such as the Customer has to communicate with the Restaurant
+in order to make an order, then the Restaurant has to communicate with the Driver, and the Driver with the Customer.
+To facilitate the communication, everyone instead uses the Mediator CPPFoodDelivery, in order to place orders, 
+communicate status, and facilitate transfer of orders and food. That way, the uniqueness of each customer, restaurant,
+and driver does not have to depend on each other as long as they can communicate with the mediator with their
+intentions.
+
+## Singleton: 
+Used for instantiated databases and data retrieval. The TimeShiftFactory is a singleton, to facilitate the use of the flyweight pattern
+the TimeShiftFactory is a singleton preventing multiple instances being created and breaking the flyweight design.
+
+
+---
+# Project Description
+
 At least 4 Design Patterns(Must state design patterns used in implementation and why you selected)
 
 Create an online food delivery platform that connects Customers, Restaurants and Drivers to
@@ -32,20 +72,3 @@ Orders should include: restaurant, customer, dietary restriction, list of food i
 modifications based on customers dietary restrictions and any optional toppings selected], driver, order
 creation time(Customer), order pick up time(Driver picks up order) and delivered time(Driver drops off
 order to Customer).
-
-
-part 1 is basically a large application that combines several previous homeworks together, in which it names homework 4 and 5 specifically, but probably others as well...
-
-Essentially, it's a food service application that has 3 different types of users:
-Restaurants, Customers, and Drivers
-
-the Restaurant has a main class, but also a sub class for menu, and a sub sub class of meals... meals will need to have a decorator to include toppings and likely an abstract factory to include dietary restrictions...
-(we could use different patters if we want as well no need to be fixed by those patterns)
-
-the Customer is just a user that actually orders things, probably have a basic log in to use that user (nothing crazy) that has info for the system to work, such as the county they are in for deliveries, and dietary restrictions for restaurants
-
-the Driver is the most basic since all it will do is be assigned some delivery depending on the where the order is placed, for example if they are to deliver to some county, and there is a driver that operates there, they will be assigned that order
-
-lastly, time is also included, but that basically means both the restaurant and driver classes will also have some operating hours that whenever the order is places, will only use specific drivers / delivery times only...
-
-all this is under a single object, (CPPFoodDelivery), then the driver connects onto the food app, which just prints what is happening
