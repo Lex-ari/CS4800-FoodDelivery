@@ -94,7 +94,7 @@ public class CPPFoodDelivery {
         return completedOrders;
     }
 
-    public void compelteDeliveries(){
+    public void completeDeliveries(){
         for (DeliveryDriver driver : deliveryDrivers){
             if (driver.getCurrentOrder() != null){
                 driver.finishDelivery();
